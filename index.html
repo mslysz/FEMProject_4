@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Interactive card details form</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-top">
+        <img
+          class="card-back-image"
+          src="./images/bg-card-back.png"
+          alt="card-back"
+        />
+
+        <img
+          class="card-front-image"
+          src="./images/bg-card-front.png"
+          alt="card-front"
+        />
+
+        <span class="card-logo-big"></span>
+        <span class="card-logo-small"></span>
+        <span class="card-numbers-text js-card-numbers-text"
+          >0000 0000 0000 0000</span
+        >
+        <span class="card-holder-text js-card-holder-text">JANE APPLESEED</span>
+        <span class="card-month-text js-card-month-text">00</span>
+        <span class="slash-element">/</span>
+        <span class="card-year-text js-card-year-text">00</span>
+        <span class="back-card-cvc js-card-cvc">000</span>
+      </div>
+
+      <form>
+        <div class="container-bottom">
+          <div class="card-holder-container">
+            <label class="user-details">CARDHOLDER NAME</label>
+            <input
+              type="text"
+              pattern="[a-zA-Z]+"
+              class="card-holder-input js-card-holder-input"
+              placeholder="e.g.Jane Appleseed"
+            />
+          </div>
+          <div class="card-number-container">
+            <label class="user-details">CARD NUMBER</label>
+            <input
+              type="text"
+              maxlength="16"
+              class="card-numbers-input js-card-numbers-input"
+              placeholder="e.g. 1234 5678 9123 0000"
+            />
+          </div>
+          <div class="details-container">
+            <div class="exp-date-cvc-labels">
+              <label class="user-details">EXP. DATE (MM/YY)</label>
+              <label class="user-details">CVC</label>
+            </div>
+            <div class="exp-date-cvc-inputs">
+              <input
+                type="text"
+                maxlength="2"
+                class="month-day-input flex-items js-month-day-input"
+                placeholder="MM"
+              />
+              <input
+                type="text"
+                maxlength="2"
+                class="year-day-input flex-items js-year-day-input"
+                placeholder="YY"
+              />
+              <input
+                type="text"
+                maxlength="3"
+                class="cvc-input flex-items js-cvc-input"
+                placeholder="e.g. 123"
+              />
+            </div>
+          </div>
+          <button class="confirm-button js-confirm-button">Confirm</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

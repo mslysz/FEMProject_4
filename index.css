@@ -1,0 +1,208 @@
+:root {
+  --main-white-color: hsl(0, 0%, 100%);
+  --light-violet-color: hsl(270, 3%, 87%);
+  --dark-violet-color: hsl(279, 6%, 55%);
+  --very-dark-violet-color: hsl(278, 68%, 11%);
+  --active-input-color: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+  --input-error-color: hsl(0, 100%, 66%);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .container {
+    height: 100vh;
+    width: 100%;
+  }
+  .container-top {
+    position: relative;
+    background-image: url(./images/bg-main-mobile.png);
+    width: 100%;
+    height: 240px;
+  }
+  .card-back-image {
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    height: 155px;
+  }
+  .card-front-image {
+    height: 155px;
+    position: absolute;
+    bottom: -33px;
+    left: 15px;
+  }
+  .card-logo-big {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: var(--main-white-color);
+    top: 140px;
+    left: 35px;
+  }
+  .card-logo-small {
+    position: absolute;
+    top: 147px;
+    left: 76px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 1px solid var(--main-white-color);
+  }
+  .container-bottom {
+    background-color: var(--main-white-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 90px 20px;
+  }
+
+  .card-holder-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+  }
+  .card-number-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  .card-numbers-text {
+    position: absolute;
+    bottom: 10px;
+    left: 35px;
+    color: var(--main-white-color);
+    letter-spacing: 2px;
+  }
+  .card-holder-text {
+    position: absolute;
+    bottom: -18px;
+    left: 35px;
+    color: var(--main-white-color);
+    letter-spacing: 2px;
+    font-size: 10px;
+  }
+  .card-month-text {
+    position: absolute;
+    bottom: -18px;
+    left: 248px;
+    color: var(--main-white-color);
+    letter-spacing: 2px;
+    font-size: 10px;
+  }
+  .slash-element {
+    position: absolute;
+    bottom: -18px;
+    left: 265px;
+    color: var(--main-white-color);
+    letter-spacing: 2px;
+    font-size: 10px;
+  }
+  .card-year-text {
+    position: absolute;
+    bottom: -18px;
+    left: 272px;
+    color: var(--main-white-color);
+    letter-spacing: 2px;
+    font-size: 10px;
+  }
+  .back-card-cvc {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    color: var(--main-white-color);
+    letter-spacing: 2px;
+    font-size: 10px;
+  }
+  .details-container {
+    margin-bottom: 15px;
+  }
+  .user-details {
+    color: var(--very-dark-violet-color);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    margin-right: 32px;
+    letter-spacing: 1px;
+  }
+  .exp-date-cvc-labels {
+    margin-bottom: 8px;
+  }
+  .exp-date-cvc-inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: stretch;
+    margin-bottom: 20px;
+  }
+  .flex-items:nth-child(1) {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    width: 24%;
+    margin-right: 10px;
+  }
+
+  .flex-items:nth-child(2) {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    width: 24%;
+    margin-right: 10px;
+  }
+
+  .flex-items:nth-child(3) {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    width: 49%;
+  }
+
+  .card-holder-input,
+  .card-numbers-input,
+  .month-day-input,
+  .year-day-input,
+  .cvc-input {
+    height: 45px;
+    border: 1px solid var(--light-violet-color);
+    border-radius: 8px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    text-indent: 20px;
+  }
+  .card-holder-input::placeholder,
+  .card-numbers-input::placeholder,
+  .year-day-input::placeholder,
+  .month-day-input::placeholder,
+  .cvc-input::placeholder {
+    color: var(--light-violet-color);
+  }
+  .confirm-button {
+    padding: 16px 22px;
+    border-radius: 8px;
+    border: none;
+    color: var(--main-white-color);
+    background-color: var(--very-dark-violet-color);
+    font-size: 16px;
+  }
+}
