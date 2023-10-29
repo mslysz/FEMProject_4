@@ -1,51 +1,158 @@
-document.querySelector('.js-card-holder-input').addEventListener('input', displayTextName);
-document.querySelector('.js-card-numbers-input').addEventListener('input', displayTextNumber);
-document.querySelector('.js-year-day-input').addEventListener('input', displayYearNumber);
-document.querySelector('.js-month-day-input').addEventListener('input', displayMonthNumber);
-document.querySelector('.js-cvc-input').addEventListener('input', displayCVCNumber);
-
+// Get references to all the form elements.
+const form = document.querySelector('form');
 const cardHolderSpan = document.querySelector('.js-card-holder-text');
 const cardNumberSpan = document.querySelector('.js-card-numbers-text');
-const cardCVCSpan = document.querySelector('.js-card-cvc');
-const cardYearSpan = document.querySelector('.js-card-year-text');
 const cardMonthSpan = document.querySelector('.js-card-month-text');
+const cardYearSpan = document.querySelector('.js-card-year-text');
+const cardCVCSpan = document.querySelector('.js-card-cvc');
+const backButton = document.querySelector('.js-back-button');
+// Get references to all the error messages.
+const nameError = document.querySelector('.error-name');
+const cardError = document.querySelector('.error-cardnumber');
+const monthError = document.querySelector('.error-month');
+const yearError = document.querySelector('.error-year');
+const cvcErorr = document.querySelector('.error-cvc');
 
-function displayTextName(e) {
-  if (e.target.value === "") {
+const cardHolder = document.querySelector('.js-card-holder-input');
+const cardNumber = document.querySelector('.js-card-numbers-input');
+const monthElement = document.querySelector('.js-month-day-input');
+const yearElement = document.querySelector('.js-year-day-input');
+const cvcElement = document.querySelector('.js-cvc-input');
+const clearInput = document.querySelectorAll('input');
+const arrInput = [...clearInput];
+
+
+//Submited message
+const informationWindow = document.querySelector('.js-form-submited');
+const containerElement = document.querySelector('.js-container-bottom');
+
+function displayTextName() {
+  if (cardHolder.value === "") {
     cardHolderSpan.innerHTML = "JANE APPLESEED";
-  } else {
-    cardHolderSpan.innerHTML = e.target.value.toUpperCase();
   }
+  cardHolderSpan.innerHTML = cardHolder.value.toUpperCase();
+  cardHolderSpan.classList.remove('active');
 }
 
-function displayTextNumber(e) {
-  let text = e.target.value.replace(/\s/g, "");
+function displayTextNumber() {
+  let text = cardNumber.value.replace(/\s/g, "");
   let spacedText = text.replace(/(.{4})/g, "$1 ");
-  if (e.target.value === "") {
+  if (cardNumber.value === "") {
     cardNumberSpan.innerHTML = "0000 0000 0000 0000";
-  } else {
-    cardNumberSpan.innerHTML = spacedText;
+  } else if (isNaN(cardNumber.value)) {
+    cardError.innerHTML = "Wrong format, numbers only"
+    cardError.classList.add('active')
   }
-
-}
-function displayCVCNumber(e) {
-  if (e.target.value === "") {
-    cardCVCSpan.innerHTML = "000"
-  } else {
-    cardCVCSpan.innerHTML = e.target.value;
+  else if (text.length !== 16) {
+    cardError.innerHTML = "The card number must contain 16 characters"
+    cardError.classList.add('active');
   }
-}
-function displayYearNumber(e) {
-  if (e.target.value === "") {
-    cardYearSpan.innerHTML = "00"
-  } else {
-    cardYearSpan.innerHTML = e.target.value;
+  else {
+    cardNumberSpan.innerHTML = spacedText
+    cardError.classList.remove('active');
   }
 }
-function displayMonthNumber(e) {
-  if (e.target.value === "") {
+function displayMonthNumber() {
+  if (monthElement.value === "") {
     cardMonthSpan.innerHTML = "00"
-  } else {
-    cardMonthSpan.innerHTML = e.target.value;
+    monthError.innerHTML = "Can't be blank"
+    monthError.classList.remove('active')
+  } else if (isNaN(monthElement.value)) {
+    monthError.innerHTML = "Use numbers only";
+    monthError.classList.add('active');
+  }
+  else if (monthElement.value <= 0 && monthElement.value >= 31) {
+    monthError.innerHTML = "Enter numbers 1 to 31";
+    console.log('error')
+  }
+  else {
+    cardMonthSpan.innerHTML = monthElement.value;
+    monthError.classList.remove('active');
   }
 }
+
+function displayYearNumber() {
+  if (yearElement.value === "") {
+    cardYearSpan.innerHTML = "00"
+    yearError.classList.remove('active')
+  } else if (isNaN(yearElement.value)) {
+    yearError.innerHTML = "Use numbers only";
+    yearError.classList.add('active');
+  }
+  else {
+    cardYearSpan.innerHTML = yearElement.value;
+  }
+}
+
+function displayCVCNumber() {
+  if (cvcElement.value === "") {
+    cardCVCSpan.innerHTML = "000"
+    cvcErorr.classList.remove('active');
+  } else if (isNaN(cvcElement.value)) {
+    cvcErorr.innerHTML = "Use numbers only";
+    cvcErorr.classList.add('active');
+  }
+  else {
+    cvcErorr.classList.remove('active');
+    cardCVCSpan.innerHTML = cvcElement.value;
+
+  }
+}
+
+const validateForm = (e) => {
+  e.preventDefault();
+
+  if (cardHolder.value === "") {
+    nameError.innerHTML = "Name must be filled out";
+    nameError.classList.add('active');
+    return false
+  }
+  if (cardNumber.value === "") {
+    cardError.innerHTML = "Card number must be filled out ";
+    cardError.classList.add('active');
+    return false
+  }
+  if (monthElement.value === "") {
+    monthError.innerHTML = "Can't be blank";
+    monthError.classList.add('active');
+    return false
+  }
+  if (yearElement.value === "") {
+    yearError.innerHTML = "Can't be blank";
+    yearError.classList.add('active');
+    return false
+  }
+  if (cvcElement.value === "") {
+    cvcErorr.innerHTML = "Can't be blank";
+    cvcErorr.classList.add('active');
+    return false
+  }
+  else {
+    nameError.classList.remove('active');
+    cardError.classList.remove('active');
+    monthError.classList.remove('active');
+    yearError.classList.remove('active');
+    cvcErorr.classList.remove('active');
+    containerElement.classList.add('offWindow');
+    informationWindow.classList.add('onWindow');
+  }
+  return true
+}
+const resetForm = () => {
+  const inputsExceptLast = arrInput.slice(0, arrInput.length - 1);
+  inputsExceptLast.forEach((input) => {
+    input.value = "";
+  })
+  containerElement.classList.remove('offWindow');
+  informationWindow.classList.remove('onWindow');
+}
+
+
+
+cardHolder.addEventListener('input', displayTextName);
+cardNumber.addEventListener('input', displayTextNumber);
+monthElement.addEventListener('input', displayMonthNumber);
+yearElement.addEventListener('input', displayYearNumber);
+cvcElement.addEventListener('input', displayCVCNumber);
+form.addEventListener('submit', validateForm);
+backButton.addEventListener('click', resetForm);
