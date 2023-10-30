@@ -5,6 +5,7 @@
   --very-dark-violet-color: hsl(278, 68%, 11%);
   --active-input-color: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
   --input-error-color: hsl(0, 100%, 66%);
+  --main-body-color: hsl(198, 45%, 90%);
 }
 * {
   padding: 0;
@@ -17,12 +18,14 @@ body {
   font-weight: 500;
 }
 .container {
-  height: 100vh;
+  background-image: url(./images/bg-main-mobile.png);
+  background-color: var(--main-white-color);
+  background-size: 100% 240px;
+  background-repeat: no-repeat;
   width: 100%;
 }
 .container-top {
   position: relative;
-  background-image: url(./images/bg-main-mobile.png);
   width: 100%;
   height: 240px;
 }
@@ -160,10 +163,11 @@ body {
   font-size: 13px;
   letter-spacing: 1px;
   margin-bottom: 8px;
-  margin-right: 32px;
   letter-spacing: 1px;
+  width: 50%;
 }
 .exp-date-cvc-labels {
+  display: flex;
   margin-bottom: 8px;
 }
 .exp-date-cvc-inputs {
@@ -243,7 +247,6 @@ body {
 
 /* Error message */
 .error-message-container {
-  /* position: relative; */
   display: flex;
   width: 100%;
   height: 30px;
@@ -278,7 +281,7 @@ body {
 .error-name {
   display: none;
 }
-
+/* JS added class */
 .active {
   display: block;
 }
@@ -287,4 +290,97 @@ body {
 }
 .offWindow {
   display: none;
+}
+
+@media (min-width: 860px) {
+  body {
+    background-color: var(--main-body-color);
+  }
+  .container {
+    position: relative;
+    margin: 100px auto;
+    background-image: url(./images/bg-main-desktop.png);
+    background-repeat: no-repeat;
+    height: 903px;
+    width: 1440px;
+    background-size: 483px 900px;
+  }
+  form {
+    position: absolute;
+    width: 500px;
+    top: 183px;
+    right: 125px;
+  }
+  .container-top {
+    width: 33%;
+    height: 240px;
+  }
+  .container-bottom {
+    height: 0px;
+  }
+  .card-back-image {
+    top: 470px;
+    left: 265px;
+    height: 245px;
+  }
+  .card-front-image {
+    height: 245px;
+    top: 190px;
+    left: 160px;
+  }
+  .card-logo-big {
+    top: 230px;
+    left: 190px;
+    width: 50px;
+    height: 50px;
+  }
+  .card-logo-small {
+    top: 245px;
+    left: 255px;
+    width: 20px;
+    height: 20px;
+  }
+  .card-numbers-text {
+    top: 330px;
+    left: 200px;
+    font-size: 28px;
+    width: 800px;
+    letter-spacing: 3px;
+  }
+  .card-holder-text {
+    top: 390px;
+    left: 200px;
+    font-size: 14px;
+  }
+  .card-month-text {
+    top: 390px;
+    left: 516px;
+    font-size: 14px;
+  }
+  .slash-element {
+    top: 390px;
+    left: 540px;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-size: 14px;
+  }
+  .card-year-text {
+    top: 390px;
+    left: 549px;
+    letter-spacing: 2px;
+    font-size: 14px;
+  }
+  .back-card-cvc {
+    top: 580px;
+    left: 620px;
+    letter-spacing: 2px;
+    font-size: 14px;
+  }
+  .form-submited button {
+    width: 370px;
+  }
+  .onWindow {
+    display: flex;
+    margin-left: 22%;
+  }
 }

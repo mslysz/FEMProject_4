@@ -6,6 +6,7 @@ const cardMonthSpan = document.querySelector('.js-card-month-text');
 const cardYearSpan = document.querySelector('.js-card-year-text');
 const cardCVCSpan = document.querySelector('.js-card-cvc');
 const backButton = document.querySelector('.js-back-button');
+
 // Get references to all the error messages.
 const nameError = document.querySelector('.error-name');
 const cardError = document.querySelector('.error-cardnumber');
@@ -19,7 +20,7 @@ const monthElement = document.querySelector('.js-month-day-input');
 const yearElement = document.querySelector('.js-year-day-input');
 const cvcElement = document.querySelector('.js-cvc-input');
 const clearInput = document.querySelectorAll('input');
-const arrInput = [...clearInput];
+const inputElements = [...clearInput];
 
 
 //Submited message
@@ -27,8 +28,10 @@ const informationWindow = document.querySelector('.js-form-submited');
 const containerElement = document.querySelector('.js-container-bottom');
 
 function displayTextName() {
-  if (cardHolder.value === "") {
+  if (cardHolder.value.length === 0 || cardHolder.value.length === "") {
     cardHolderSpan.innerHTML = "JANE APPLESEED";
+    nameError.innerHTML = "Name must be filled out";
+    cardHolderSpan.classList.add('active');
   }
   cardHolderSpan.innerHTML = cardHolder.value.toUpperCase();
   cardHolderSpan.classList.remove('active');
@@ -54,16 +57,11 @@ function displayTextNumber() {
 }
 function displayMonthNumber() {
   if (monthElement.value === "") {
-    cardMonthSpan.innerHTML = "00"
-    monthError.innerHTML = "Can't be blank"
-    monthError.classList.remove('active')
+    cardMonthSpan.innerHTML = "00";
+    monthError.classList.remove('active');
   } else if (isNaN(monthElement.value)) {
     monthError.innerHTML = "Use numbers only";
     monthError.classList.add('active');
-  }
-  else if (monthElement.value <= 0 && monthElement.value >= 31) {
-    monthError.innerHTML = "Enter numbers 1 to 31";
-    console.log('error')
   }
   else {
     cardMonthSpan.innerHTML = monthElement.value;
@@ -73,8 +71,8 @@ function displayMonthNumber() {
 
 function displayYearNumber() {
   if (yearElement.value === "") {
-    cardYearSpan.innerHTML = "00"
-    yearError.classList.remove('active')
+    cardYearSpan.innerHTML = "00";
+    yearError.classList.remove('active');
   } else if (isNaN(yearElement.value)) {
     yearError.innerHTML = "Use numbers only";
     yearError.classList.add('active');
@@ -102,7 +100,7 @@ function displayCVCNumber() {
 const validateForm = (e) => {
   e.preventDefault();
 
-  if (cardHolder.value === "") {
+  if (cardHolder.value == "") {
     nameError.innerHTML = "Name must be filled out";
     nameError.classList.add('active');
     return false
@@ -130,19 +128,35 @@ const validateForm = (e) => {
   else {
     nameError.classList.remove('active');
     cardError.classList.remove('active');
-    monthError.classList.remove('active');
     yearError.classList.remove('active');
+    monthError.classList.remove('active');
     cvcErorr.classList.remove('active');
+
     containerElement.classList.add('offWindow');
     informationWindow.classList.add('onWindow');
   }
   return true
 }
-const resetForm = () => {
-  const inputsExceptLast = arrInput.slice(0, arrInput.length - 1);
+
+const setDefaultSpanValues = () => {
+  cardHolderSpan.innerHTML = "JANE APPLESEED"
+  cardNumberSpan.innerHTML = "0000 0000 0000 0000";
+  cardMonthSpan.innerHTML = "00";
+  cardYearSpan.innerHTML = "00";
+  cardCVCSpan.innerHTML = "000"
+}
+
+const clearInputFields = (inputElements) => {
+  const inputsExceptLast = inputElements.slice(0, inputElements.length - 1);
   inputsExceptLast.forEach((input) => {
     input.value = "";
   })
+}
+const resetForm = () => {
+  clearInputFields(inputElements)
+  setDefaultSpanValues()
+  console.log("Form has been reset")
+
   containerElement.classList.remove('offWindow');
   informationWindow.classList.remove('onWindow');
 }
