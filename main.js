@@ -136,7 +136,7 @@ const validateForm = (e) => {
     isValid = false;
   } else {
     yearError.classList.remove('active');
-    yearElement.classList.remove('active');
+    yearElement.classList.remove('error');
   }
 
   if (cvcElement.value === '') {
