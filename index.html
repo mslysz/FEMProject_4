@@ -13,8 +13,8 @@
     <title>Frontend Mentor | Interactive card details form</title>
   </head>
   <body>
-    <div class="container">
-      <div class="container-top">
+    <main class="container">
+      <section class="container-top">
         <img
           class="card-back-image"
           src="./images/bg-card-back.png"
@@ -37,8 +37,8 @@
         <span class="slash-element">/</span>
         <span class="card-year-text js-card-year-text">00</span>
         <span class="back-card-cvc js-card-cvc">000</span>
-      </div>
-      <div class="form-submited js-form-submited">
+      </section>
+      <section class="form-submited js-form-submited">
         <img
           class="image-complete"
           src="./images/icon-complete.svg"
@@ -47,12 +47,15 @@
         <h1>THANK YOU!</h1>
         <p>We've added your card details</p>
         <button class="confirm-button js-back-button">Continue</button>
-      </div>
+      </section>
       <form>
         <div class="container-bottom js-container-bottom">
           <div class="card-holder-container">
-            <label class="user-details">CARDHOLDER NAME</label>
+            <label class="user-details" for="card-holder-input"
+              >CARDHOLDER NAME</label
+            >
             <input
+              id="card-holder-input"
               type="text"
               class="card-holder-input js-card-holder-input"
               placeholder="e.g.Jane Appleseed"
@@ -60,8 +63,11 @@
             <p class="error-name"></p>
           </div>
           <div class="card-number-container">
-            <label class="user-details">CARD NUMBER</label>
+            <label class="user-details" for="card-numbers-input"
+              >CARD NUMBER</label
+            >
             <input
+              id="card-numbers-input"
               type="text"
               maxlength="16"
               class="card-numbers-input js-card-numbers-input"
@@ -71,11 +77,14 @@
           </div>
           <div class="details-container">
             <div class="exp-date-cvc-labels">
-              <label class="user-details">EXP. DATE (MM/YY)</label>
-              <label class="user-details">CVC</label>
+              <label class="user-details" for="month-day-input"
+                >EXP. DATE (MM/YY)</label
+              >
+              <label class="user-details" for="cvc-input">CVC</label>
             </div>
             <div class="exp-date-cvc-inputs">
               <input
+                id="month-day-input"
                 type="text"
                 maxlength="2"
                 class="month-day-input flex-items js-month-day-input"
@@ -83,6 +92,7 @@
               />
 
               <input
+                id="year-day-input"
                 type="text"
                 maxlength="2"
                 class="year-day-input flex-items js-year-day-input"
@@ -90,6 +100,7 @@
               />
 
               <input
+                id="cvc-input"
                 type="text"
                 maxlength="3"
                 class="cvc-input flex-items js-cvc-input"
@@ -109,7 +120,7 @@
           />
         </div>
       </form>
-    </div>
+    </main>
 
     <script src="main.js"></script>
   </body>
