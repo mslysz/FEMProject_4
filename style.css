@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 18px;
   font-weight: 500;
 }
@@ -22,7 +22,7 @@ body {
   background-color: var(--main-white-color);
   background-size: 100% 240px;
   background-repeat: no-repeat;
-  width: 100%;
+  /* width: 100%; */
 }
 .container-top {
   position: relative;
@@ -291,25 +291,27 @@ body {
 .offWindow {
   display: none;
 }
+.error {
+  border-color: var(--input-error-color);
+}
 
-@media (min-width: 860px) {
+@media (min-width: 1385px) {
   body {
     background-color: var(--main-body-color);
   }
   .container {
     position: relative;
-    margin: 100px auto;
+    /* margin: 100px auto; */
     background-image: url(./images/bg-main-desktop.png);
     background-repeat: no-repeat;
-    height: 903px;
-    width: 1440px;
-    background-size: 483px 900px;
+    height: 100vh;
+    background-size: 483px 100vh;
   }
   form {
     position: absolute;
-    width: 500px;
-    top: 183px;
-    right: 125px;
+    width: 550px;
+    /* top: 183px; */
+    right: 10%;
   }
   .container-top {
     width: 33%;
